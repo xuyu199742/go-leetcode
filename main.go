@@ -6,6 +6,11 @@ type ListNode struct {
 	Val int
 	Nex *ListNode
 }
+type TreeNode struct {
+	Left  *TreeNode
+	Right *TreeNode
+	Val   int
+}
 
 func main() {
 	fmt.Println("hello word")
@@ -100,4 +105,21 @@ func reverseString(s []byte) {
 		l--
 		r++
 	}
+}
+
+//二叉树最大深度
+func maxDepth(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+
+	return max(maxDepth(root.Left), maxDepth(root.Right)) + 1
+}
+
+func max(l, r int) int {
+	if l > r {
+		return l
+	}
+
+	return r
 }
