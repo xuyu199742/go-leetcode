@@ -10,7 +10,9 @@ type ListNode struct {
 func main() {
 	fmt.Println("hello word")
 	nums := []int{1, 2, 3, 4, 4, 5}
+	//fmt.Println()
 	removeElement(nums, 4)
+	//fmt.Println(nums)
 }
 
 // 两数之和 map
@@ -83,12 +85,27 @@ func removeElement(nums []int, val int) int {
 	if length == 0 {
 		return 0
 	}
+	//[]int{1, 2, 3, 4, 4, 5}
 	for i := 0; i < length; i++ {
 		if nums[i] == val {
-
-			fmt.Println(i)
+			for j := i + 1; j < length; j++ {
+				fmt.Println(j)
+				//nums[i-1] = nums[j]
+			}
+			//length--
+			//i--
 		}
 	}
 
-	return 0
+	return length
+}
+
+//字符串反转
+func reverseString(s []byte) {
+	r, l := 0, len(s)-1
+	for r < l {
+		s[r], s[l] = s[l], s[r]
+		l--
+		r++
+	}
 }
