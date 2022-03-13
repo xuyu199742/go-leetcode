@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 type ListNode struct {
 	Val int
 	Nex *ListNode
@@ -13,7 +11,6 @@ type TreeNode struct {
 }
 
 func main() {
-	fmt.Println("hello word")
 }
 
 // 两数之和 map
@@ -80,7 +77,7 @@ func search(nums []int, target int) int {
 	return -1
 }
 
-//删除排序数组中的重复项
+//删除排序数组中的重复项 双指针
 func removeDuplicates(nums []int) int {
 	length := len(nums)
 	if length == 0 {
@@ -97,7 +94,7 @@ func removeDuplicates(nums []int) int {
 	return show
 }
 
-//字符串反转
+//字符串反转 双指针
 func reverseString(s []byte) {
 	r, l := 0, len(s)-1
 	for r < l {
@@ -107,7 +104,7 @@ func reverseString(s []byte) {
 	}
 }
 
-//二叉树最大深度
+//二叉树最大深度 递归
 func maxDepth(root *TreeNode) int {
 	if root == nil {
 		return 0
@@ -122,4 +119,14 @@ func max(l, r int) int {
 	}
 
 	return r
+}
+
+//[1, 2, 3, 4, 5, 6, 7]
+//旋转数组
+func rotateArr(nums []int, k int) {
+	tmp := make([]int, len(nums))
+
+	for i := 0; i < len(nums); i++ {
+		nums[(k+i)%len(nums)] = tmp[i]
+	}
 }
