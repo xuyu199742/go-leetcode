@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type ListNode struct {
 	Val int
 	Nex *ListNode
@@ -11,6 +13,7 @@ type TreeNode struct {
 }
 
 func main() {
+	fmt.Println("hello word")
 }
 
 // 两数之和 map
@@ -129,4 +132,23 @@ func rotateArr(nums []int, k int) {
 	for i := 0; i < len(nums); i++ {
 		nums[(k+i)%len(nums)] = tmp[i]
 	}
+}
+
+//去除非重复元素
+func unrepeatedArr(nums []int) []int {
+	m := make(map[int]int, len(nums))
+	for _, v := range nums {
+		if _, ok := m[v]; ok {
+			m[v]++
+		} else {
+			m[v] = 1
+		}
+	}
+	s := make([]int, 0)
+	for i := 0; i < len(nums); i++ {
+		if m[nums[i]] > 1 {
+			s = append(s, nums[i])
+		}
+	}
+	return s
 }
