@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+)
 
 type ListNode struct {
 	Val int
@@ -10,6 +13,7 @@ type TreeNode struct {
 	Left  *TreeNode
 	Right *TreeNode
 	Val   int
+	m     *sync.Mutex
 }
 
 func main() {
@@ -150,5 +154,27 @@ func unrepeatedArr(nums []int) []int {
 			s = append(s, nums[i])
 		}
 	}
+	return s
+}
+
+//两个数组的交集
+func intersect(nums1, nums2 []int) []int {
+	m := make(map[int]int, 0)
+	s := make([]int, 0)
+
+	for _, v := range nums1 {
+		if _, ok := m[v]; ok {
+			m[v]++
+		} else {
+			m[v] = 1
+		}
+	}
+	for _, v := range nums2 {
+		if _, ok := m[v]; ok {
+			s = append(s, v)
+			m[v]--
+		}
+	}
+
 	return s
 }
